@@ -3,11 +3,31 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>VShow</title>
+    <!-- Include stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/video.js@6.6.2/dist/video-js.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vue-video-player@5.0.0/src/custom-theme.css" rel="stylesheet">
+    <!-- Include the videojs library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/6.6.2/video.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <!-- videojs JS Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue-video-player@5.0.0/dist/vue-video-player.js"></script>
+    <script language="javascript">
+        function qw() {
+            document.getElementById('nullp').click();
+            // alert("dd");
+        }
+    </script>
 </head>
 
-<body>
-    <h1>Client</h1>
+<body onload="qw()">
+    <div id="vueapp">
+        <button id="nullp" v-on:click="btnClick"> {{ message }}</button>
+        <video-player class="vjs-custom-skin" ref="videoPlayer" :options="playerOptions" :playsinline="true" @play="onPlayerPlay($event)" @pause="onPlayerPause($event)" @ended="onPlayerEnded($event)" @loadeddata="onPlayerLoadeddata($event)" @waiting="onPlayerWaiting($event)"
+            @playing="onPlayerPlaying($event)" @timeupdate="onPlayerTimeupdate($event)" @canplay="onPlayerCanplay($event)" @canplaythrough="onPlayerCanplaythrough($event)" @ready="playerReadied" @statechanged="playerStateChanged($event)">
+        </video-player>
+    </div>
+    <script src="./index.js"></script>
 </body>
 
 </html>
